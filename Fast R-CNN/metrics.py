@@ -4,10 +4,6 @@ import sys
 import shutil
 
 def measure(targets, outputs, data):
-  try:
-    shutil.rmtree('/home/jupyter/data/detections')
-  except OSError as e:
-    print ("Error: %s - %s." % (e.filename, e.strerror))
   if not os.path.exists('/home/jupyter/data/detections'):
     os.makedirs('/home/jupyter/data/detections')
   

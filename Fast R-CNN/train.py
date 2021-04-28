@@ -8,6 +8,9 @@ import math
 from metrics import measure
 from truth import create_ground
 import matplotlib.pyplot as plt
+import os
+import shutil
+import sys
 
 def train():
   """
@@ -109,6 +112,11 @@ def train():
     
   print("Eval")
   model.eval()
+  try:
+    shutil.rmtree('/home/jupyter/data/detections')
+    print("detections removed and recreated")
+  except OSError as e:
+    print ("Error: %s - %s." % (e.filename, e.strerror))
   for images, targets in val_loader:
     images = list(image.to(device) for image in images)
     output = model(images)

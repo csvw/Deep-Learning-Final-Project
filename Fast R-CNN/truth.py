@@ -7,6 +7,7 @@ import shutil
 def create_ground(subset, data, im_size=255):
   try:
     shutil.rmtree('/home/jupyter/data/groundtruths')
+    print("groundtruths removed and recreated")
   except OSError as e:
     print ("Error: %s - %s." % (e.filename, e.strerror))
   if not os.path.exists('/home/jupyter/data/groundtruths'):
