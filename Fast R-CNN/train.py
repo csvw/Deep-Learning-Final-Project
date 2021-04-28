@@ -31,7 +31,7 @@ def train():
   model = get_model().to(device)
   dataset = VinBigDataset()
   
-  TEST = False
+  TEST = True
   
   if TEST:
     keep_len = math.floor(.05 * len(dataset))
@@ -114,7 +114,7 @@ def train():
     output = model(images)
     outputs = [{k:v.to(device) for k,v in t.items()} for t in output]
 #     print(targets)
-    print(outputs)
+#     print(outputs)
     measure(targets, outputs, dataset)
     
     
@@ -129,5 +129,6 @@ def train():
   plt.title("Average Training Loss")
   plt.xlabel("Iteration")
   plt.ylabel("Average Loss")
+  plt.savefig("Loss 1 Epoch")
       
 train()

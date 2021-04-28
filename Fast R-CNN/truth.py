@@ -1,6 +1,14 @@
 import os
+import sys
+import shutil
+
+
 
 def create_ground(subset, data, im_size=255):
+  try:
+    shutil.rmtree('/home/jupyter/data/groundtruths')
+  except OSError as e:
+    print ("Error: %s - %s." % (e.filename, e.strerror))
   if not os.path.exists('/home/jupyter/data/groundtruths'):
       os.makedirs('/home/jupyter/data/groundtruths')
 
